@@ -19,7 +19,7 @@ if (!BOT_TOKEN) {
 export const bot = new Bot(BOT_TOKEN);
 
 bot.command('appss_verify', async (ctx) => {
-  await ctx.reply('appss_ad940f');
+  await ctx.reply('appss_e80bdc');
 });
 
 // Middleware
