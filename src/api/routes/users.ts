@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import prisma from '../../utils/prisma';
+import { trackEvent } from '../../utils/analytics';
 
 export const usersRouter = Router();
 
@@ -11,6 +12,9 @@ usersRouter.post('/sync', async (req: Request, res: Response) => {
     const firstName = tgUser.first_name || '';
     const lastName = tgUser.last_name || '';
     const username = tgUser.username || '';
+    const languageCode = req.body?.languageCode || req.telegramUser?.language_code;
+    const platform = req.body?.platform;
+    const timezone = req.body?.timezone;
 
     let user = await prisma.user.findUnique({ where: { telegramId } });
 
@@ -21,6 +25,11 @@ usersRouter.post('/sync', async (req: Request, res: Response) => {
           firstName,
           lastName,
           username,
+          languageCode,
+          platform,
+          timezone,
+          lastSeenAt: new Date(),
+          launchCount: 1,
         },
       });
     } else {
@@ -30,9 +39,24 @@ usersRouter.post('/sync', async (req: Request, res: Response) => {
           firstName: firstName || user.firstName,
           lastName: lastName || user.lastName,
           username: username || user.username,
+          languageCode: languageCode || user.languageCode,
+          platform: platform || user.platform,
+          timezone: timezone || user.timezone,
+          lastSeenAt: new Date(),
+          launchCount: { increment: 1 },
         },
       });
     }
+
+    await trackEvent({
+      telegramId,
+      type: 'webapp_sync',
+      source: 'webapp',
+      path: '/api/users/sync',
+      languageCode,
+      platform,
+      timezone,
+    });
 
     res.json(user);
   } catch (err) {

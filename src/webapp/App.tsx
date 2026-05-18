@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { LayoutDashboard, Eye, ClipboardCheck, BarChart3, Ellipsis } from 'lucide-react';
 import { useTelegram } from './hooks/useTelegram';
-import { getStartParam } from './utils/telegram';
+import { apiRequest, getStartParam } from './utils/telegram';
 import Start from './pages/Start';
 import OnboardingStory from './features/onboarding/OnboardingStory';
 import Dashboard from './pages/Dashboard';
@@ -44,6 +44,21 @@ export default function App() {
   useEffect(() => {
     if (tg) document.documentElement.classList.toggle('dark', tg.colorScheme === 'dark');
   }, [tg]);
+
+  useEffect(() => {
+    if (!initData) return;
+
+    apiRequest('/users/sync', {
+      method: 'POST',
+      body: JSON.stringify({
+        languageCode: user?.language_code,
+        platform: tg?.platform,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      }),
+    }).catch((err) => {
+      console.warn('User analytics sync failed:', err instanceof Error ? err.message : err);
+    });
+  }, [initData, tg?.platform, user?.language_code]);
 
   useEffect(() => {
     const p = getStartParam();

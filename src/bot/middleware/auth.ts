@@ -15,6 +15,19 @@ export async function ensureUser(ctx: Context, next: NextFunction) {
           firstName: ctx.from?.first_name || '',
           lastName: ctx.from?.last_name || '',
           username: ctx.from?.username || '',
+          languageCode: ctx.from?.language_code || '',
+          lastSeenAt: new Date(),
+        },
+      });
+    } else {
+      await prisma.user.update({
+        where: { telegramId },
+        data: {
+          firstName: ctx.from?.first_name || existing.firstName,
+          lastName: ctx.from?.last_name || existing.lastName,
+          username: ctx.from?.username || existing.username,
+          languageCode: ctx.from?.language_code || existing.languageCode,
+          lastSeenAt: new Date(),
         },
       });
     }

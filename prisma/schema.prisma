@@ -13,6 +13,10 @@ model User {
   firstName     String?
   lastName      String?
   username      String?
+  languageCode  String?
+  platform      String?
+  lastSeenAt    DateTime?
+  launchCount   Int      @default(0)
   screenHours   Int?
   hasProblems   Boolean?
   reminderTime  String?
@@ -31,9 +35,29 @@ model User {
   exercises       ExerciseLog[]
   visionTests     VisionTest[]
   dailyLogs       DailyLog[]
+  appEvents       AppEvent[]
   referrals       User[]             @relation("ReferralChain")
   referrer        User?              @relation("ReferralChain", fields: [referredBy], references: [telegramId])
   referralRewards ReferralReward[]
+}
+
+model AppEvent {
+  id           String   @id @default(cuid())
+  userId       String?
+  telegramId   String?
+  type         String
+  source       String
+  path         String?
+  languageCode String?
+  platform     String?
+  timezone     String?
+  createdAt    DateTime @default(now())
+  user         User?    @relation(fields: [userId], references: [id])
+
+  @@index([createdAt])
+  @@index([telegramId, createdAt])
+  @@index([type, createdAt])
+  @@index([source, createdAt])
 }
 
 model ReferralReward {

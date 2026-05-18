@@ -1,4 +1,5 @@
 import { Context, NextFunction } from 'grammy';
+import { trackEvent } from '../../utils/analytics';
 
 export async function logActivity(ctx: Context, next: NextFunction) {
   const start = Date.now();
@@ -13,6 +14,16 @@ export async function logActivity(ctx: Context, next: NextFunction) {
       console.log(`[SLOW] from ${user} took ${ms}ms`);
     } else {
       console.log(`[OK] from ${user} (${ms}ms)`);
+    }
+
+    if (from?.id) {
+      await trackEvent({
+        telegramId: String(from.id),
+        type: ctx.message?.text?.startsWith('/') ? 'bot_command' : ctx.callbackQuery ? 'bot_callback' : 'bot_activity',
+        source: 'bot',
+        path: ctx.message?.text || ctx.callbackQuery?.data,
+        languageCode: from.language_code,
+      });
     }
   } catch (err: unknown) {
     const ms = Date.now() - start;

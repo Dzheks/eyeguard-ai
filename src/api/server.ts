@@ -7,6 +7,7 @@ import { usersRouter } from './routes/users';
 import { exercisesRouter } from './routes/exercises';
 import { paymentsRouter } from './routes/payments';
 import { referralRouter } from './routes/referral';
+import { adminRouter } from './routes/admin';
 import { telegramAuth } from './middleware/telegramAuth';
 import { startCleanupScheduler } from '../utils/scheduler';
 
@@ -27,6 +28,7 @@ app.use('/api/users', telegramAuth, usersRouter);
 app.use('/api/exercises', telegramAuth, exercisesRouter);
 app.use('/api/payments', telegramAuth, paymentsRouter);
 app.use('/api/referral', telegramAuth, referralRouter);
+app.use('/api/admin', adminRouter);
 const webappPath = path.resolve(process.cwd(), 'dist', 'webapp');
 app.use(express.static(webappPath));
 app.get('*', (req, res, next) => {

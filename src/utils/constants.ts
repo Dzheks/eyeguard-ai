@@ -5,6 +5,11 @@ export const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || '';
 export const BOT_MODE = process.env.BOT_MODE || (WEBHOOK_URL ? 'webhook' : 'polling');
 export const MINI_APP_URL = process.env.MINI_APP_URL || '';
 export const PORT = parseInt(process.env.PORT || '10000', 10);
+export const ADMIN_API_KEY = process.env.ADMIN_API_KEY || '';
+export const ADMIN_TELEGRAM_IDS = (process.env.ADMIN_TELEGRAM_IDS || '')
+  .split(',')
+  .map((id) => id.trim())
+  .filter(Boolean);
 
 export const EXERCISES = {
   // в”Ђв”Ђ Free exercises (4) в”Ђв”Ђ
