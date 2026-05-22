@@ -209,7 +209,7 @@ export default function Profile({ onNavigate, user, initData, initialTab }: Prop
           </div>
 
           <motion.button onClick={() => shareToStory(
-            `EyeGuard AI:\n${stats?.streak||0} дней подряд\n${stats?.totalExercises||0} всего\nПроверь зрение: t.me/eyeguardbot/app`
+            `EyeGuard AI:\n${stats?.streak||0} дней подряд\n${stats?.totalExercises||0} всего\nПроверь зрение: t.me/eyeguard_ai_bot/eyeguard`
           )}
             className="w-full btn-primary py-4 flex items-center justify-center gap-2"
             whileHover={{scale:1.02}} whileTap={{scale:0.96}}>
@@ -372,7 +372,7 @@ export default function Profile({ onNavigate, user, initData, initialTab }: Prop
                 </div>
                 <div className="text-text-muted text-[13px] mt-1">Telegram Stars</div>
                 <motion.button
-                  onClick={() => window.Telegram?.WebApp?.openTelegramLink?.('https://t.me/eyeguardbot?start=premium')}
+                  onClick={() => window.Telegram?.WebApp?.openTelegramLink?.('https://t.me/eyeguard_ai_bot?start=premium')}
                   className="btn-primary w-full py-4 mt-5 text-[16px] flex items-center justify-center gap-2"
                   whileHover={{scale:1.02}} whileTap={{scale:0.96}}>
                   <Sparkles size={18} strokeWidth={2} />

@@ -23,12 +23,12 @@ export function setupInline(bot: Bot) {
             '👁️ *Проверь своё зрение!*\n\n' +
             'Я только что прошёл тест зрения в EyeGuard AI. ' +
             'Проверь и ты — это бесплатно и занимает 2 минуты.\n\n' +
-            '🔗 [Открыть EyeGuard AI](https://t.me/eyeguardbot/app?startapp=vision_test)',
+            '🔗 [Открыть EyeGuard AI](https://t.me/eyeguard_ai_bot/eyeguard?startapp=vision_test)',
           parse_mode: 'Markdown',
         },
         reply_markup: new InlineKeyboard().url(
           '👁️ Проверить зрение',
-          'https://t.me/eyeguardbot/app?startapp=vision_test'
+          'https://t.me/eyeguard_ai_bot/eyeguard?startapp=vision_test'
         ),
         thumb_url: 'https://placehold.co/100x100/2563eb/white?text=👁️',
       });
@@ -55,12 +55,12 @@ export function setupInline(bot: Bot) {
             '💪 *Мой прогресс в EyeGuard AI*\n\n' +
             `🏋️ Упражнений за неделю: *${exerciseCount}*\n\n` +
             'Присоединяйся и заботься о зрении вместе со мной!\n\n' +
-            '🔗 [Открыть EyeGuard AI](https://t.me/eyeguardbot/app)',
+            '🔗 [Открыть EyeGuard AI](https://t.me/eyeguard_ai_bot/eyeguard)',
           parse_mode: 'Markdown',
         },
         reply_markup: new InlineKeyboard().url(
           '👁️ Открыть EyeGuard',
-          'https://t.me/eyeguardbot/app'
+          'https://t.me/eyeguard_ai_bot/eyeguard'
         ),
         thumb_url: 'https://placehold.co/100x100/10b981/white?text=💪',
       });
@@ -88,7 +88,7 @@ export function setupInline(bot: Bot) {
           },
           reply_markup: new InlineKeyboard().url(
             '▶️ Выполнить',
-            `https://t.me/eyeguardbot/app?startapp=${ex.url}`
+            `https://t.me/eyeguard_ai_bot/eyeguard?startapp=${ex.url}`
           ),
           thumb_url: `https://placehold.co/100x100/2563eb/white?text=${ex.emoji}`,
         });
@@ -106,12 +106,12 @@ export function setupInline(bot: Bot) {
           message_text:
             '👁️ *EyeGuard AI*\n\nПерсональный офтальмолог в Telegram. ' +
             'Упражнения, тесты зрения и умные напоминания.\n\n' +
-            '[Открыть приложение](https://t.me/eyeguardbot/app)',
+            '[Открыть приложение](https://t.me/eyeguard_ai_bot/eyeguard)',
           parse_mode: 'Markdown',
         },
         reply_markup: new InlineKeyboard().url(
           '👁️ Открыть',
-          'https://t.me/eyeguardbot/app'
+          'https://t.me/eyeguard_ai_bot/eyeguard'
         ),
       });
     }

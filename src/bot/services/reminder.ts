@@ -121,7 +121,7 @@ async function processReminders(bot: Bot) {
           {
             reply_markup: new InlineKeyboard().webApp(
               '📱 Открыть тренажёр',
-              MINI_APP_URL || 'https://t.me/eyeguardbot/app'
+              MINI_APP_URL || 'https://t.me/eyeguard_ai_bot/eyeguard'
             ),
           }
         );

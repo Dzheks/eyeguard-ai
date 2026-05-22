@@ -16,7 +16,7 @@ export function setupReferral(bot: Bot) {
       return;
     }
 
-    const botUsername = ctx.me?.username || 'eyeguardbot';
+    const botUsername = ctx.me?.username || 'eyeguard_ai_bot';
     const inviteLink = `https://t.me/${botUsername}?start=ref_${code}`;
 
     const nextMilestone = MILESTONE_COUNTS.find((m) => stats.referralCount < m) || null;
@@ -61,7 +61,7 @@ export function setupReferral(bot: Bot) {
     if (!telegramId) return;
 
     const code = await ensureReferralCode(telegramId);
-    const botUsername = ctx.me?.username || 'eyeguardbot';
+    const botUsername = ctx.me?.username || 'eyeguard_ai_bot';
     const inviteLink = `https://t.me/${botUsername}?start=ref_${code}`;
 
     await ctx.reply(

@@ -96,7 +96,7 @@ export function setupPayments(bot: Bot) {
           parse_mode: 'Markdown',
           reply_markup: {
             inline_keyboard: [[
-              { text: '📱 Открыть EyeGuard', web_app: { url: process.env.MINI_APP_URL || 'https://t.me/eyeguardbot/app' } },
+              { text: '📱 Открыть EyeGuard', web_app: { url: process.env.MINI_APP_URL || 'https://t.me/eyeguard_ai_bot/eyeguard' } },
             ]],
           },
         }

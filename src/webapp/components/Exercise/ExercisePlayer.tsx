@@ -190,7 +190,7 @@ export default function ExercisePlayer({ exerciseType, onBack, initData }: Props
 
           {/* CTA */}
           <motion.button
-            onClick={() => window.Telegram?.WebApp?.openTelegramLink?.('https://t.me/eyeguardbot?start=premium')}
+            onClick={() => window.Telegram?.WebApp?.openTelegramLink?.('https://t.me/eyeguard_ai_bot?start=premium')}
             className="btn-primary w-full max-w-xs flex items-center justify-center gap-2"
             style={{
               background: 'linear-gradient(135deg, #F5A623 0%, #D4891A 100%)',

@@ -18,7 +18,7 @@ referralRouter.get('/stats', async (req: Request, res: Response) => {
       return;
     }
 
-    const botUsername = 'eyeguardbot';
+    const botUsername = 'eyeguard_ai_bot';
     const inviteLink = `https://t.me/${botUsername}?start=ref_${stats.referralCode}`;
 
     res.json({ ...stats, inviteLink });

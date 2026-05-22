@@ -68,7 +68,7 @@ export default function Premium() {
   }, []);
 
   const handlePurchase = () => {
-    window.Telegram?.WebApp?.openTelegramLink?.('https://t.me/eyeguardbot?start=premium');
+    window.Telegram?.WebApp?.openTelegramLink?.('https://t.me/eyeguard_ai_bot?start=premium');
   };
 
   if (loading) {
