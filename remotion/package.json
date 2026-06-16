@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "studio": "remotion studio src/Root.tsx",
-    "render": "remotion render src/Root.tsx KiraDayInLife out/kira-day-in-life.mp4",
-    "still": "remotion still src/Root.tsx KiraDayInLife --frame=45 out/preview.jpg"
+    "studio": "remotion studio src/index.tsx",
+    "render": "remotion render src/index.tsx KiraDayInLife out/kira-day-in-life.mp4",
+    "still": "remotion still src/index.tsx KiraDayInLife --frame=45 out/preview.jpg"
   },
   "keywords": [],
   "author": "",
