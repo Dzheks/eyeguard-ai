@@ -7,9 +7,11 @@ import {
 } from "remotion";
 import { Scene } from "./scenes/Scene";
 import { FadeTransition } from "./scenes/Transition";
+import { HookScene } from "./scenes/HookScene";
 
 const FPS = 30;
 const TRANSITION = 20; // frames of cross-fade overlap
+const HOOK_DURATION = 240; // 8s hook clip (nyc-pizza.mp4)
 
 // Scene durations in seconds → frames
 const DURATIONS = [90, 90, 120, 90, 60]; // 3s, 3s, 4s, 3s, 2s = 15s total
@@ -17,7 +19,7 @@ const START: number[] = [];
 DURATIONS.reduce((acc, d, i) => {
   START[i] = acc;
   return acc + d - (i < DURATIONS.length - 1 ? TRANSITION : 0);
-}, 0);
+}, HOOK_DURATION - TRANSITION);
 
 const SCENES = [
   {
@@ -96,6 +98,16 @@ const KiraLogo: React.FC = () => {
 export const KiraReel: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
+      <Sequence from={0} durationInFrames={HOOK_DURATION} name="Hook">
+        <HookScene />
+        <Sequence
+          from={HOOK_DURATION - TRANSITION}
+          durationInFrames={TRANSITION}
+        >
+          <FadeTransition />
+        </Sequence>
+      </Sequence>
+
       {SCENES.map((scene, i) => (
         <Sequence
           key={i}
