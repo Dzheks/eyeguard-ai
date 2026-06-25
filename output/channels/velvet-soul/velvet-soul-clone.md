@@ -57,7 +57,7 @@ Wide YouTube banner, deep crimson-red background with a warm radial gold glow, c
 | Mood | Nostalgic, intimate, smoky, melancholic, romantic |
 
 **Character anatomy lock:**
-Realistic photoreal female vocalist, 1950s-60s styling, soft wavy or pin-curled hair (brunette or platinum blonde), fair skin with warm cinematic tone, fitted vintage slip/halter evening dress, minimal jewelry, always performing at a vintage ribbon or chrome microphone on a stand, natural realistic proportions, no cartoon/anime/illustrated stylization.
+Realistic photoreal Black female vocalist, 1950s-60s styling, soft pin-curled or natural wavy dark hair, rich dark-brown skin with warm cinematic glow, fitted vintage slip/halter evening dress, minimal jewelry, always performing at a vintage ribbon or chrome microphone on a stand, natural realistic proportions, no cartoon/anime/illustrated stylization.
 
 **Environment locks:**
 - ENV_jazz_lounge: dim vintage jazz/blues club interior — wooden bar lined with bottles, string/pendant lighting, leather booths, neon/marquee signage with brand name, warm amber-brown haze (#3a2418, #6b4226, #c9a06b)
